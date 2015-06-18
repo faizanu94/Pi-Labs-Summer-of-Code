@@ -13,7 +13,7 @@ var Model = function(Args)
 Model.prototype.getdata = function()
 {
   var that = this;
-  $.get('http://localhost:3030',function(res)
+  $.get('http://datastore.asadmemon.com/faizanu94',function(res)
   {
     for(var i in res)
     {
@@ -28,7 +28,7 @@ Model.prototype.setdata = function(a,b,c)
 {
   $.ajax(
   {
-    url: 'http://localhost:3030/send/'+ new Date().getTime(), 
+    url: 'http://datastore.asadmemon.com/faizanu94/'+ new Date().getTime(), 
     type: 'POST', 
     contentType: 'application/json', 
     data: JSON.stringify({timestamp:a,nick:b,msg:c}),
