@@ -1,0 +1,28 @@
+# Asynchronous Group Chat
+
+Asynchronous Group Chat is a cloud based, JavaScript powered HTML5 Web Application.
+The Workspace http://datastore.asadmemon.com/faizanu94 can be changed to http://datastore.asadmemon.com/yoursecret
+
+### Version
+3.0.0
+
+### Tech
+
+Asynchronous Group Chat uses a number of open source projects to work properly:
+
+* [AngularJS] - HTML enhanced for web apps!
+* [Marked] - a super fast port of Markdown to JavaScript
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [jQuery] - duh
+
+### Todo's
+
+Write Tests
+Github saving overhaul
+Code Commenting
+Night Mode
+
+License
+----
+
+MIT

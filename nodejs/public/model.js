@@ -13,14 +13,16 @@ var Model = function(Args)
 Model.prototype.getdata = function()
 {
   var that = this;
-  $.get('http://localhost:3030',function(res)
+  $.get('http://localhost:3030/data',function(res)
   {
     for(var i in res)
     {
       if(res[i].timestamp > that.lastTimestamp )
+      {
         controller.append(res[i]);
+      }
     }
-    that.lastTimestamp = i;
+    that.lastTimestamp = res[i].timestamp;
   });
 };
 
