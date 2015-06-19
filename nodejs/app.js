@@ -7,19 +7,6 @@ var jsonParser = bodyParser.json();
 var app = express();
 var monk = require('monk');
 var db = monk('localhost:27017/chat');
-app.use(function(req,res,next){
-    req.db = db;
-    next();
-});
-
-app.all('*', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-    
-    next();
-});
 
 app.use('/', express.static(__dirname + '/public'));
 
