@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Inbox</title>
+    <link href="bootstrap-3.3.4-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.4-dist/css/custom.css" rel="stylesheet">
+    <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+    <script src="model.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-2">
+                <a href="/logout" class="btn btn-danger btn-sm btn-block" role="button">LOGOUT</a>
+                <button style="margin:8%; margin-left:15%;" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Compose</button>
+                <hr />
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="/inbox"><span class="badge pull-right"></span> Inbox </a>
+                </li>
+                    <li><a href="#">Starred</a></li>
+                    <li><a href="#">Important</a></li>
+                    <li><a href="/sent">Sent Mail</a></li>
+                    <li><a href="#"><span class="badge pull-right"></span>Drafts</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-md-10">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
+                    </span>Primary</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="home">
+                        <div class="list-group mailbox2">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="profile">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <span class="text-center">This tab is empty.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="messages">...</div>
+                        <div class="tab-pane fade in" id="settings">This tab is empty.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Inbox</title>
+    <link href="bootstrap-3.3.4-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.4-dist/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+              <div class="col-sm-3 col-md-2">
+                <a href="/logout" class="btn btn-danger btn-sm btn-block" role="button">LOGOUT</a>
+                <button style="margin:8%; margin-left:15%;" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Compose</button>
+                <hr />
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#"><span class="badge pull-right"></span> Inbox </a>
+                </li>
+                    <li><a href="#">Starred</a></li>
+                    <li><a href="#">Important</a></li>
+                    <li><a href="sent.html">Sent Mail</a></li>
+                    <li><a href="#"><span class="badge pull-right"></span>Drafts</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-md-10">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
+                    </span>Primary</a></li>
+                </ul>
+                <div class="container-fluid">
+                        <div class="form-group">
+                            <label class="col-sm-2" for="inputFrom">From</label>
+                                <div class="col-sm-10">
+                                    <input value="" type="email" class="form-control" name="from" id="inputFrom11" placeholder="" readonly>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12" for="inputBody">Message</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="msg" id="inputBody11" rows="18" readonly></textarea>
+                                </div>
+                        </div>
+                        <a id="sender"><button class="btn btn-primary">Reply</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+    <script src="model.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function getURLParameter(name)
+    {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+    }
+    document.getElementById('sender').href="reply.html?id=" + getURLParameter('id');
+    view.replier(getURLParameter('id'),0);
+    </script>
+</body>
+</html>

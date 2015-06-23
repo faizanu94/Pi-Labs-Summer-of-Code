@@ -10,13 +10,6 @@ var monk = require('monk');
 var db = monk('localhost:27017/chat');
 //var flash    = require('connect-flash');
 
-
-
-var users = [
-    { id: 1, username: 'bob', password: 'secret', email: 'bob@example.com' }
-  , { id: 2, username: 'joe', password: 'birthday', email: 'joe@example.com' }
-];
-
 function findById(id, fn) {
 var collection = db.get('messagescollection');
 collection.findOne({_id:id},{},function(e,docs){
@@ -32,6 +25,7 @@ function findByUsername(username, fn) {
 var collection = db.get('messagescollection');
 collection.findOne({username:username},{},function(e,docs){
     if (docs.username === username) {
+      publicemail = docs.email;
       return fn(null, docs);
     }
   return fn(null, null);
@@ -113,8 +107,12 @@ app.use(express.static(__dirname + '/public'));
 
 
 
-app.get('/account', ensureAuthenticated, function(req, res){
-  res.send(req.user);
+app.get('/inbox', ensureAuthenticated, function(req, res){
+  res.redirect('inbox.html')
+});
+
+app.get('/sent', ensureAuthenticated, function(req, res){
+  res.redirect('sent.html')
 });
 
 app.get('/register', function(req, res){
@@ -123,6 +121,31 @@ app.get('/register', function(req, res){
 
 app.get('/login', function(req, res){
   res.redirect('loginform.html')
+});
+
+app.get('/getinbox', function(req, res){
+var collection = db.get('message');
+  collection.find({to:req.user.email},{},function(e,docs){
+    res.send(docs);
+  });
+});
+
+app.get('/getmessageandfrom/*', function(req, res){
+var collection = db.get('message');
+  collection.findOne({"_id":req.params[0]},{},function(e,docs){
+    res.send(docs);
+  });
+});
+
+app.get('/getsent', function(req, res){
+var collection = db.get('message');
+  collection.find({from:req.user.email},{},function(e,docs){
+    res.send(docs);
+  });
+});
+
+app.get('/compose', function(req, res){
+  res.redirect('inbox.html')
 });
 
 // POST /login
@@ -152,9 +175,24 @@ app.post('/login',
     console.log("success",req.user);
     console.log("s2",req.session);
 
-    res.redirect('/account');
+    res.redirect('/inbox');
   });
 
+app.post('/compose', 
+  function(req, res) {
+var collection = db.get('message');
+req.body.from = publicemail;
+req.body.timestamp = new Date().getTime();
+    collection.insert(req.body, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.db.send("There was a problem adding the information to the database.");
+        }
+        else {
+    res.redirect('/inbox');
+        }
+    });
+  });
 // POST /login
 //   This is an alternative implementation that uses a custom callback to
 //   acheive the same functionality.

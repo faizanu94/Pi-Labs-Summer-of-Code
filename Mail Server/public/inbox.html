@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Inbox</title>
+    <link href="bootstrap-3.3.4-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.4-dist/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="modal fade container" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="text-align:center;">Compose an Email</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/compose" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2" for="inputTo">To</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" name="to" id="inputTo" placeholder="comma separated list of recipients">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2" for="inputSubject">Subject</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="subject" id="inputSubject" placeholder="subject">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12" for="inputBody">Message</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="msg" id="inputBody" rows="15"></textarea>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-left:3%;margin:1%;">Send!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-2">
+            <img src="Images/b.gif" style="height:30%;width:30%;visibility:hidden;" id="imageloader">
+                <a href="/logout" class="btn btn-danger btn-sm btn-block" role="button">LOGOUT</a>
+                <button style="margin:8%; margin-left:15%;" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Compose</button>
+                <hr />
+                <hr />
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="/inbox"><span class="badge pull-right" id="counter"></span> Inbox </a>
+                </li>
+                    <li><a href="#">Starred</a></li>
+                    <li><a href="#">Important</a></li>
+                    <li><a href="/sent">Sent Mail</a></li>
+                    <li><a href="#"><span class="badge pull-right"></span>Drafts</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-md-10">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
+                    </span>Primary</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="home">
+                        <div class="list-group mailbox1">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="profile">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <span class="text-center">This tab is empty.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="messages">...</div>
+                        <div class="tab-pane fade in" id="settings">This tab is empty.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+    <script src="model.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
