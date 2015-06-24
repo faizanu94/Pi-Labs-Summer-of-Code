@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var monk = require('monk');
 var db = monk('localhost:27017/chat');
+var publicemail;
 //var flash    = require('connect-flash');
 
 function findById(id, fn) {
@@ -108,18 +109,22 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/inbox', ensureAuthenticated, function(req, res){
-  res.redirect('inbox.html')
+  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
+  res.redirect('loginform.html')
 });
 
 app.get('/sent', ensureAuthenticated, function(req, res){
-  res.redirect('sent.html')
+  if (req.isAuthenticated()) {   res.redirect('sent.html') }
+  res.redirect('loginform.html')
 });
 
 app.get('/register', function(req, res){
-  res.redirect('registrationform.html')
+  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
+  res.redirect('register.html')
 });
 
 app.get('/login', function(req, res){
+  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
   res.redirect('loginform.html')
 });
 
@@ -145,7 +150,8 @@ var collection = db.get('message');
 });
 
 app.get('/compose', function(req, res){
-  res.redirect('inbox.html')
+  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
+  res.redirect('loginform.html')
 });
 
 // POST /login
@@ -181,7 +187,7 @@ app.post('/login',
 app.post('/compose', 
   function(req, res) {
 var collection = db.get('message');
-req.body.from = publicemail;
+req.body.from = req.user.email;
 req.body.timestamp = new Date().getTime();
     collection.insert(req.body, function (err, doc) {
         if (err) {
