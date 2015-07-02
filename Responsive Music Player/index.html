@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Responsive Music Player</title>
+  <link href="Assets/Images/favicon.jpg" rel="icon">
+  <link href="Assets/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="Assets/mystyle.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="#menu-toggle" id="menu-toggle" style="float:left;margin-left:15px;">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav hidden-xs">
+          <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i></a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-tint"></i></a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-bell"></i><span class="count">3</span></a></li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="input-group col-md-12">
+            <span class="input-group-btn">
+              <button class="btn btn-info" type="button">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </span>
+            <input type="text" class="form-control" placeholder="Search for Music"/>
+          </div>
+        </form>
+      </div>        
+    </div>
+  </nav>
+  <div id="wrapper">
+    <div id="sidebar-wrapper" class="left">
+      <ul class="sidebar-nav">
+        <li><a href="#" data-toggle="collapse" data-target="#demo1"><i class="fa-fw glyphicon glyphicon-fire"></i> Main <i class="fa fa-fw fa-caret-down"></i></a>
+          <ul id="demo1" class="collapse">
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-tint"></i> What's New</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-inbox"></i> Inbox</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-user"></i> People</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-globe"></i> Play Que</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-leaf"></i> Devices</a></li>
+          </ul>
+        </li>
+        <li><a href="#" data-toggle="collapse" data-target="#demo2"><i class="fa-fw glyphicon glyphicon-bitcoin"></i> Collection <i class="fa fa-fw fa-caret-down"></i></a>
+          <ul id="demo2" class="collapse">
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-tasks"></i> Library</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-cutlery"></i> Favorites</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-signal"></i> History</a></li>
+          </ul>
+        </li>
+        <li><a href="#" data-toggle="collapse" data-target="#demo3"><i class="fa-fw glyphicon glyphicon-education"></i> Playlists <i class="fa fa-fw fa-caret-down"></i></a>
+          <ul id="demo3" class="collapse">
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-plane"></i> Work Mixes</a></li>
+            <li><a href="#"><i class="fa-fw glyphicon glyphicon-flash"></i> Pussy Lounge</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="sidebar-wrapper" class="hidden-xs right">
+      <ul class="sidebar-nav">
+        <li><a href="#" data-toggle="collapse" data-target="#demo4"><i class="fa-fw glyphicon glyphicon-cloud"></i> Friend Feed <i class="fa fa-fw fa-caret-down"></i></a>
+          <ul id="demo4" class="collapse">
+            <li><a href="#"><img src="Assets/Images/User.png"> Faizan</a></li>
+            <li><a href="#"><img src="Assets/Images/User.png"> Asad</a></li>
+            <li><a href="#"><img src="Assets/Images/User.png"> Bilal</a></li>
+            <li><a href="#"><img src="Assets/Images/User.png"> Omar</a></li>
+            <li><a href="#"><img src="Assets/Images/User.png"> Asif</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+            <a href="#"><img class="img-responsive" src="Assets/Images/A.png" alt=""></a>
+              <p><strong>So Cold</strong></p>    
+              <p>Fruther Seems Forever</p>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <audio controls>
+            <source src="Stereo Love.mp3" type="audio/mpeg">Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="Assets/myscript.js"></script>
+  <script src="Assets/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+</script>
+</body>
+</html>

@@ -8,7 +8,6 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var monk = require('monk');
 var db = monk('localhost:27017/chat');
-var publicemail;
 //var flash    = require('connect-flash');
 
 function findById(id, fn) {
@@ -26,7 +25,6 @@ function findByUsername(username, fn) {
 var collection = db.get('messagescollection');
 collection.findOne({username:username},{},function(e,docs){
     if (docs.username === username) {
-      publicemail = docs.email;
       return fn(null, docs);
     }
   return fn(null, null);
@@ -109,26 +107,24 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/inbox', ensureAuthenticated, function(req, res){
-  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
-  res.redirect('loginform.html')
+  res.sendfile(__dirname + "/public/inbox.html")
+  //if (req.isAuthenticated()) {   res.redirect('inbox.html') }
+  //res.redirect('loginform.html')
 });
 
 app.get('/sent', ensureAuthenticated, function(req, res){
-  if (req.isAuthenticated()) {   res.redirect('sent.html') }
-  res.redirect('loginform.html')
+  res.redirect('sent.html')
 });
 
 app.get('/register', function(req, res){
-  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
-  res.redirect('register.html')
+  res.redirect('inbox.html')
 });
 
 app.get('/login', function(req, res){
-  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
   res.redirect('loginform.html')
 });
 
-app.get('/getinbox', function(req, res){
+app.get('/getinbox',ensureAuthenticated, function(req, res){
 var collection = db.get('message');
   collection.find({to:req.user.email},{},function(e,docs){
     res.send(docs);
@@ -150,8 +146,7 @@ var collection = db.get('message');
 });
 
 app.get('/compose', function(req, res){
-  if (req.isAuthenticated()) {   res.redirect('inbox.html') }
-  res.redirect('loginform.html')
+  res.redirect('inbox.html')
 });
 
 // POST /login
