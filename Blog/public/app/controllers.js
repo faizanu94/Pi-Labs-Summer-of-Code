@@ -9,6 +9,7 @@ controller('SigninController', function($scope,ergastAPIservice,$location)
     	if($scope.username != "")
     		$location.path("/home");
     });
+    
 	$scope.get = function()
 	{
     	ergastAPIservice.getUser($scope.username,$scope.password).success(function(response)
